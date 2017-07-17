@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Travels list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Link</th>
+                <th>Description</th>
+                <th>Position</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for travel in travels %}
+            <tr>
+                <td><a href="{{ path('travel_show', { 'id': travel.id }) }}">{{ travel.id }}</a></td>
+                <td>{{ travel.name }}</td>
+                <td>{{ travel.city.name }}</td>
+                <td>{{ travel.link }}</td>
+                <td>{{ travel.description }}</td>
+                <td>{{ travel.position }}</td>
+                <td>{% if travel.createdAt %}{{ travel.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if travel.updatedAt %}{{ travel.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('travel_show', { 'id': travel.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('travel_edit', { 'id': travel.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('travel_new') }}">Create a new travel</a>
+        </li>
+    </ul>
+{% endblock %}

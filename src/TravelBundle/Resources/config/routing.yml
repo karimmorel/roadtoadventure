@@ -1,0 +1,19 @@
+stuff:
+    resource: "@TravelBundle/Resources/config/routing/stuff.yml"
+    prefix:   /
+
+category:
+    resource: "@TravelBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
+travel:
+    resource: "@TravelBundle/Resources/config/routing/travel.yml"
+    prefix:   /travel
+
+city:
+    resource: "@TravelBundle/Resources/config/routing/city.yml"
+    prefix:   /city
+
+travel_homepage:
+    path:     /
+    defaults: { _controller: TravelBundle:Default:index }

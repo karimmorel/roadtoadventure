@@ -1,0 +1,24 @@
+travel_index:
+    path:     /
+    defaults: { _controller: "TravelBundle:Travel:index" }
+    methods:  GET
+
+travel_show:
+    path:     /{id}/show
+    defaults: { _controller: "TravelBundle:Travel:show" }
+    methods:  GET
+
+travel_new:
+    path:     /new
+    defaults: { _controller: "TravelBundle:Travel:new" }
+    methods:  [GET, POST]
+
+travel_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "TravelBundle:Travel:edit" }
+    methods:  [GET, POST]
+
+travel_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "TravelBundle:Travel:delete" }
+    methods:  DELETE

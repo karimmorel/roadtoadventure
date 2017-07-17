@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Stuffs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Priority</th>
+                <th>Minprice</th>
+                <th>Price</th>
+                <th>Link</th>
+                <th>Informations</th>
+                <th>Buy</th>
+                <th>Worth</th>
+                <th>Category</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for stuff in stuffs %}
+            <tr>
+                <td><a href="{{ path('_show', { 'id': stuff.id }) }}">{{ stuff.id }}</a></td>
+                <td>{{ stuff.name }}</td>
+                <td>{{ stuff.priority }}</td>
+                <td>{{ stuff.minPrice }}</td>
+                <td>{{ stuff.price }}</td>
+                <td>{{ stuff.link }}</td>
+                <td>{{ stuff.informations }}</td>
+                <td>{% if stuff.buy %}Yes{% else %}No{% endif %}</td>
+                <td>{{ stuff.worth }}</td>
+                <td>{{ stuff.category.name }}</td>
+                <td>{% if stuff.createdAt %}{{ stuff.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if stuff.updatedAt %}{{ stuff.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('_show', { 'id': stuff.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('_edit', { 'id': stuff.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('_new') }}">Create a new stuff</a>
+        </li>
+    </ul>
+{% endblock %}
