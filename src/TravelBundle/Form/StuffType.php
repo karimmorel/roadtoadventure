@@ -15,14 +15,30 @@ class StuffType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('name')
-        ->add('priority')
-        ->add('minPrice')
-        ->add('price')
-        ->add('link')
-        ->add('informations')
-        ->add('buy')
-        ->add('worth')
+        ->add('name', null, array(
+            'label' => 'Nom'
+        ))
+        ->add('priority', null, array(
+            'label' => 'Priorité'
+        ))
+        ->add('minPrice', null, array(
+            'label' => 'Prix Recherché'
+        ))
+        ->add('price', null, array(
+            'label' => 'Prix Moyen'
+        ))
+        ->add('link', null, array(
+            'label' => 'Lien'
+        ))
+        ->add('informations', null, array(
+            'label' => 'Informations'
+        ))
+        ->add('buy', null, array(
+            'label' => 'Acheté ?'
+        ))
+        ->add('worth', null, array(
+            'label' => 'Équivalent'
+        ))
         ->add('category', EntityType::class, array(
             'class' => 'TravelBundle:Category',
             'choice_label' => 'name',

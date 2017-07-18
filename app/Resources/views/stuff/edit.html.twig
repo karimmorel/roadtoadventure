@@ -1,21 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Stuff edit</h1>
+    <h1>{{ stuff.name }}</h1>
 
-    {{ form_start(edit_form) }}
+    {{ form_start(edit_form, {'attr': {'class': 'form-group'}}) }}
+    <div class="form-group"></div>
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+        <input type="submit" value="Modifier" />
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('_index') }}">Back to the list</a>
-        </li>
-        <li>
+            <a href="{{ path('_index') }}">Liste des équipements</a><br/>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}

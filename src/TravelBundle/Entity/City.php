@@ -3,7 +3,6 @@
 namespace TravelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * City
  *
