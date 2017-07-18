@@ -7,8 +7,17 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     </head>
     <body>
+    <div id="menu">
+        <div id="menu-container">
+            <a href="{{ path('_index') }}">Équipements</a>
+            <a href="{{ path('travel_index') }}">Visites</a>
+            <a href="{{ path('city_index') }}">Villes</a>
+            <a href="{{ path('category_index') }}">Catégories d'Équipements</a>
+        </div>
+    </div>
     <div class="container">
         {% block body %}{% endblock %}
     </div>
