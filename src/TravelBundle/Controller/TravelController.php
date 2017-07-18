@@ -24,6 +24,7 @@ class TravelController extends Controller
 
         return $this->render('travel/index.html.twig', array(
             'travels' => $travels,
+            'city' => null
         ));
     }
 
@@ -86,6 +87,35 @@ class TravelController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
+    }
+
+    public function cityAction($city)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $city = $em->getRepository('TravelBundle:City')->findOneByName($city);
+        if($city)
+            $travels = $em->getRepository('TravelBundle:Travel')->findByCity($city->getId());
+        else
+            $travels = $em->getRepository('TravelBundle:Travel')->findBy(array(), array('city' => 'asc'));
+
+        if ($city)
+        {
+            return $this->render('travel/index.html.twig', array(
+                'travels' => $travels,
+                'city' => $city
+            ));
+        }
+        else
+        {
+            $travels = $em->getRepository('TravelBundle:Travel')->findBy(array(), array('city' => 'asc'));
+
+            return $this->render('travel/index.html.twig', array(
+                'travels' => $travels,
+                'city' => null
+            ));
+        }
+
+
     }
 
     /**

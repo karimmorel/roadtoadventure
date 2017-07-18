@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Travels list</h1>
+    {% if city %}
+        <h1>Les visites à faire à {{ city.name }}</h1>
+    {%  else %}
+        <h1>Liste des visites</h1>
+    {% endif %}
 
     <table class="table table-striped">
         <thead>
