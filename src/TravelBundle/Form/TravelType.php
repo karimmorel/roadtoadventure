@@ -15,15 +15,24 @@ class TravelType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('name')
+        ->add('name', null, array(
+            'label' => 'Nom'
+        ))
         ->add('city', EntityType::class, array(
+            'label' => 'Ville',
             'class' => 'TravelBundle:City',
             'choice_label' => 'name',
             'choice_value' => 'id'
             ))
-        ->add('link')
-        ->add('description')
-        ->add('position');
+        ->add('link', null, array(
+            'label' => 'Lien'
+        ))
+        ->add('description', null, array(
+            'label' => 'Description'
+        ))
+        ->add('position', null, array(
+            'label' => 'Position'
+        ));
     }
     
     /**

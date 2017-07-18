@@ -1,16 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Travel creation</h1>
+    <h1>Nouvelle visite</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Ajouter" />
     {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('travel_index') }}">Back to the list</a>
-        </li>
-    </ul>
+            <a href="{{ path('travel_index') }}">Liste des visites</a>
 {% endblock %}
