@@ -22,3 +22,8 @@ _delete:
     path:     /{id}/delete
     defaults: { _controller: "TravelBundle:Stuff:delete" }
     methods:  DELETE
+
+_priority:
+    path:     /{priority}
+    defaults: {_controller: "TravelBundle:Stuff:priority" }
+    methods:  GET
