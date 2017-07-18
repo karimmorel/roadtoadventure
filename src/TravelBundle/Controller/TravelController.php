@@ -20,7 +20,7 @@ class TravelController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $travels = $em->getRepository('TravelBundle:Travel')->findAll();
+        $travels = $em->getRepository('TravelBundle:Travel')->findBy(array(), array('city' => 'asc'));
 
         return $this->render('travel/index.html.twig', array(
             'travels' => $travels,

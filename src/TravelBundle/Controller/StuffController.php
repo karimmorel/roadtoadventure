@@ -20,7 +20,7 @@ class StuffController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $stuffs = $em->getRepository('TravelBundle:Stuff')->findAll();
+        $stuffs = $em->getRepository('TravelBundle:Stuff')->findBy(array(), array('priority' => 'asc'));
 
         return $this->render('stuff/index.html.twig', array(
             'stuffs' => $stuffs,
