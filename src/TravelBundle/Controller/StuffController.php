@@ -106,12 +106,10 @@ class StuffController extends Controller
         return $this->redirectToRoute('_index');
     }
 
-    public function priorityAction($priority)
+    public function priorityAction(int $priority)
     {
         $em = $this->getDoctrine()->getManager();
-        $stuffs = $em->getRepository('TravelBundle:Stuff')->findWhere($priority, '<=');
-        dump($stuffs);die();
-
+        $stuffs = $em->getRepository('TravelBundle:Stuff')->findWhere($priority);
         return $this->render('stuff/index.html.twig', array(
             'stuffs' => $stuffs,
         ));

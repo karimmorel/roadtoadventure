@@ -10,10 +10,13 @@ namespace TravelBundle\Repository;
  */
 class StuffRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findWhere($find, $operateur)
+    public function findWhere($find)
     {
         $queryBuilder = $this->createQueryBuilder('stuff');
-        $queryBuilder->where('stuff.priority '.$operateur.' :'.$find);
+        $queryBuilder
+            ->where('stuff.priority <= '.$find)
+        ->orderBy('stuff.priority','ASC');
+
         return $queryBuilder->getQuery()->getResult();
     }
 
