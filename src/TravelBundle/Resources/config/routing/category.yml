@@ -22,3 +22,8 @@ category_delete:
     path:     /{id}/delete
     defaults: { _controller: "TravelBundle:Category:delete" }
     methods:  DELETE
+
+category_add:
+    path:     /add/{name}
+    defaults: {_controller: "TravelBundle:Category:add" }
+    methods:  GET

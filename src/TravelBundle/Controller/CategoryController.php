@@ -106,6 +106,18 @@ class CategoryController extends Controller
         return $this->redirectToRoute('category_index');
     }
 
+    public function addAction(string $name)
+    {
+        $category = new Category();
+        $name = str_replace("_"," ", $name);
+        $category->setName($name);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($category);
+        $em->flush();
+
+        return $this->redirectToRoute('category_index');
+    }
+
     /**
      * Creates a form to delete a category entity.
      *

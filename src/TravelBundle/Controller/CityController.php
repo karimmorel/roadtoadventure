@@ -106,6 +106,18 @@ class CityController extends Controller
         return $this->redirectToRoute('city_index');
     }
 
+    public function addAction(string $name)
+    {
+        $city = new City();
+        $name = str_replace("_"," ", $name);
+        $city->setName($name);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($city);
+        $em->flush();
+
+            return $this->redirectToRoute('city_index');
+    }
+
     /**
      * Creates a form to delete a city entity.
      *

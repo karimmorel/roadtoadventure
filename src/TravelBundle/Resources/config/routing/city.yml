@@ -22,3 +22,8 @@ city_delete:
     path:     /{id}/delete
     defaults: { _controller: "TravelBundle:City:delete" }
     methods:  DELETE
+
+city_add:
+    path:     /add/{name}
+    defaults: {_controller: "TravelBundle:City:add" }
+    methods:  GET
