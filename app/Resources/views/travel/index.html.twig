@@ -25,7 +25,7 @@
                 <td><a href="{{ travel.link }}" target="_blank">{{ travel.name }}</a></td>
                 <td>{{ travel.city.name }}</td>
                 <td>{{ travel.description }}</td>
-                <td>{{ travel.position }}</td>
+                <td><a href="{{ travel.position }}" target="_blank">Google Maps</a></td>
                 <td>
                             <a href="{{ path('travel_edit', { 'id': travel.id }) }}">Modifier</a>
                 </td>

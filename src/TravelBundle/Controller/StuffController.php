@@ -106,7 +106,7 @@ class StuffController extends Controller
         return $this->redirectToRoute('_index');
     }
 
-    public function priorityAction(int $priority)
+    public function priorityAction($priority)
     {
         $em = $this->getDoctrine()->getManager();
         $stuffs = $em->getRepository('TravelBundle:Stuff')->findWhere($priority);

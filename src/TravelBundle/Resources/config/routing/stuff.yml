@@ -24,6 +24,6 @@ _delete:
     methods:  DELETE
 
 _priority:
-    path:     /{priority}
+    path:     /sort/{priority}
     defaults: {_controller: "TravelBundle:Stuff:priority" }
     methods:  GET
