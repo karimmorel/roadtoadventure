@@ -22,8 +22,11 @@ class StuffController extends Controller
 
         $stuffs = $em->getRepository('TravelBundle:Stuff')->findBy(array(), array('priority' => 'asc'));
 
+        $stuffsbuy = $em->getRepository('TravelBundle:Stuff')->countBuy(1);
+
         return $this->render('stuff/index.html.twig', array(
             'stuffs' => $stuffs,
+            'stuffsbuy' => $stuffsbuy,
         ));
     }
 

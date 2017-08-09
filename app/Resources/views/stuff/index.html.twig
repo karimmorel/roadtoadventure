@@ -37,5 +37,11 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <div id="stuff-recap">
+        <h3>Récapitulatif des achats</h3>
+        Nombre d'éléments achetés : {{ stuffsbuy }}
+    </div><br/>
+
             <a href="{{ path('_new') }}">Créer un Nouvel Équipement</a><br/>
 {% endblock %}
