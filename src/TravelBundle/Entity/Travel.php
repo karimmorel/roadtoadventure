@@ -31,6 +31,14 @@ class Travel
     /**
      * @var string
      *
+     * @ORM\Column(name="min_name", type="string", length=255)
+     */
+    private $min_name;
+
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="link", type="string", length=255)
      */
     private $link;
@@ -314,5 +322,29 @@ class Travel
     public function getLongitude()
     {
         return $this->longitude;
+    }
+
+    /**
+     * Set minName
+     *
+     * @param string $minName
+     *
+     * @return Travel
+     */
+    public function setMinName($minName)
+    {
+        $this->min_name = $minName;
+
+        return $this;
+    }
+
+    /**
+     * Get minName
+     *
+     * @return string
+     */
+    public function getMinName()
+    {
+        return $this->min_name;
     }
 }

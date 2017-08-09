@@ -16,7 +16,13 @@ class CityType extends AbstractType
         $builder
             ->add('name', null, array(
                 'label' => 'Nom de la ville'
-            ));
+            ))
+            ->add('latitude', null, array(
+            'label' => 'Latitude'
+        ))
+            ->add('longitude', null, array(
+            'label' => 'Longitude'
+        ));
     }
     
     /**

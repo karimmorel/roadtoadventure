@@ -1,37 +1,65 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% if city %}
-        <h1>Les visites à faire à {{ city.name }}</h1>
-    {%  else %}
-        <h1>Liste des visites</h1>
-    {% endif %}
+{% if city %}
+<h1>Les visites à faire à {{ city.name }}</h1>
+    <div id="map"></div>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Ville</th>
-                <th>Description</th>
-                <th>Position</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+{%  else %}
+<h1>Liste des visites</h1>
+{% endif %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Ville</th>
+            <th>Description</th>
+            <th>Position</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
         {% for travel in travels %}
-            <tr>
-                <td><a href="{{ path('travel_show', { 'id': travel.id }) }}">{{ travel.id }}</a></td>
-                <td><a href="{{ travel.link }}" target="_blank">{{ travel.name }}</a></td>
-                <td>{{ travel.city.name }}</td>
-                <td>{{ travel.description }}</td>
-                <td><a href="{{ travel.position }}" target="_blank">Google Maps</a></td>
-                <td>
-                            <a href="{{ path('travel_edit', { 'id': travel.id }) }}">Modifier</a>
-                </td>
-            </tr>
+        <tr>
+            <td><a href="{{ path('travel_show', { 'id': travel.id }) }}">{{ travel.id }}</a></td>
+            <td><a href="{{ travel.link }}" target="_blank">{{ travel.name }}</a></td>
+            <td>{{ travel.city.name }}</td>
+            <td>{{ travel.description }}</td>
+            <td><a href="{{ travel.position }}" target="_blank">Google Maps</a></td>
+            <td>
+                <a href="{{ path('travel_edit', { 'id': travel.id }) }}">Modifier</a>
+            </td>
+        </tr>
         {% endfor %}
-        </tbody>
-    </table>
-            <a href="{{ path('travel_new') }}">Ajouter une Visite</a>
+    </tbody>
+</table>
+<a href="{{ path('travel_new') }}">Ajouter une Visite</a>
+{% endblock %}
+{% block javascripts %}
+{% if city %}
+<script>
+      function initMap() {
+        var city = {lat: {{ city.latitude }}, lng: {{ city.longitude }}};
+        var i = 0;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: city
+        });
+        {% for travel in travels %}
+        var mark{{ travel.id }} = {lat: {{ travel.latitude }}, lng: {{ travel.longitude }}};
+        var marker{{ travel.id }} = new google.maps.Marker({
+          position: mark{{ travel.id }},
+          map: map
+        });
+        i++;
+        {% endfor %}
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqkpsYi0VHsyw1busYe9xzHX6rqezC6PE&callback=initMap">
+    </script>
+
+{% endif %}
 {% endblock %}

@@ -31,6 +31,14 @@ class Travel
     /**
      * @var string
      *
+     * @ORM\Column(name="min_name", type="string", length=255)
+     */
+    private $min_name;
+
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="link", type="string", length=255)
      */
     private $link;

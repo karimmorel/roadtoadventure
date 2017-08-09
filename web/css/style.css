@@ -38,3 +38,8 @@ html
 {
     color:skyblue;
 }
+#map
+{
+    height:400px;
+    width:100%;
+}

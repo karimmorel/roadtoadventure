@@ -32,6 +32,12 @@ class TravelType extends AbstractType
         ))
         ->add('position', null, array(
             'label' => 'Position'
+        ))
+        ->add('latitude', null, array(
+            'label' => 'Latitude'
+        ))
+        ->add('longitude', null, array(
+            'label' => 'Longitude'
         ));
     }
     
