@@ -3,12 +3,10 @@
 {% block body %}
 {% if city %}
 <h1>Les visites à faire à {{ city.name }}</h1>
-    <div id="map"></div>
-
 {%  else %}
 <h1>Liste des visites</h1>
 {% endif %}
-
+<div id="map"></div>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -42,7 +40,6 @@
 <script>
       function initMap() {
         var city = {lat: {{ city.latitude }}, lng: {{ city.longitude }}};
-        var i = 0;
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 12,
           center: city
@@ -53,7 +50,27 @@
           position: mark{{ travel.id }},
           map: map
         });
-        i++;
+        {% endfor %}
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqkpsYi0VHsyw1busYe9xzHX6rqezC6PE&callback=initMap">
+    </script>
+{% else %}
+
+<script>
+      function initMap() {
+        var city = {lat: 45.75801, lng: 4.8001016};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 2,
+          center: city
+        });
+        {% for travel in travels %}
+        var mark{{ travel.id }} = {lat: {{ travel.latitude }}, lng: {{ travel.longitude }}};
+        var marker{{ travel.id }} = new google.maps.Marker({
+          position: mark{{ travel.id }},
+          map: map
+        });
         {% endfor %}
       }
     </script>
@@ -62,4 +79,5 @@
     </script>
 
 {% endif %}
+
 {% endblock %}
