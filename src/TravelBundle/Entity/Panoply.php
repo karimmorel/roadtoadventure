@@ -2,6 +2,7 @@
 
 namespace TravelBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,6 +13,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Panoply
 {
+    /**
+
+   * @ORM\ManyToMany(targetEntity="TravelBundle\Entity\Stuff", cascade={"persist"})
+
+   */
+
+    private $stuffs;
+
     /**
      * @var int
      *
@@ -40,23 +49,15 @@ class Panoply
      *
      * @return int
      */
+
+    public function __construct()
+    {
+        $this->stuffs = new ArrayCollection();
+    }
+
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set stuff
-     *
-     * @param integer $stuff
-     *
-     * @return Panoply
-     */
-    public function setStuff($stuff)
-    {
-        $this->stuff = $stuff;
-
-        return $this;
     }
 
     /**
@@ -115,5 +116,39 @@ class Panoply
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Add stuff
+     *
+     * @param \TravelBundle\Entity\Stuff $stuff
+     *
+     * @return Panoply
+     */
+    public function addStuff(\TravelBundle\Entity\Stuff $stuff)
+    {
+        $this->stuffs[] = $stuff;
+
+        return $this;
+    }
+
+    /**
+     * Remove stuff
+     *
+     * @param \TravelBundle\Entity\Stuff $stuff
+     */
+    public function removeStuff(\TravelBundle\Entity\Stuff $stuff)
+    {
+        $this->stuffs->removeElement($stuff);
+    }
+
+    /**
+     * Get stuffs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStuffs()
+    {
+        return $this->stuffs;
     }
 }

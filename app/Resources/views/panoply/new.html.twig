@@ -1,16 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Panoply creation</h1>
+    <h1>Création d'une nouvelle panoplie</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Créer" />
     {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('panoply_index') }}">Back to the list</a>
-        </li>
-    </ul>
+            <a href="{{ path('panoply_index') }}">Retour aux panoplies</a>
 {% endblock %}

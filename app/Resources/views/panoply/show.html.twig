@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Panoply</h1>
+    <h1>{{ panoply.name }}</h1>
 
-    <table>
+    <table class="table table-striped">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -20,17 +20,9 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('panoply_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('panoply_edit', { 'id': panoply.id }) }}">Edit</a>
-        </li>
-        <li>
+            <a href="{{ path('panoply_index') }}">Retour aux panoplies</a><br/>
+            <a href="{{ path('panoply_edit', { 'id': panoply.id }) }}">Modifier</a><br/>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Supprimer"><br/>
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}

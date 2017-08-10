@@ -1,15 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Panoplies list</h1>
+    <h1>Liste des panoplies</h1>
 
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Stuff</th>
-                <th>Actions</th>
+                <th>Nom</th>
+                <th>Description</th>
             </tr>
         </thead>
         <tbody>
@@ -18,24 +17,9 @@
                 <td><a href="{{ path('panoply_show', { 'id': panoply.id }) }}">{{ panoply.id }}</a></td>
                 <td>{{ panoply.name }}</td>
                 <td>{{ panoply.description }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('panoply_show', { 'id': panoply.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('panoply_edit', { 'id': panoply.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('panoply_new') }}">Create a new panoply</a>
-        </li>
-    </ul>
+            <a href="{{ path('panoply_new') }}">Créer une nouvelle panoplie</a>
 {% endblock %}
