@@ -1,3 +1,7 @@
+travel_panoply:
+    resource: "@TravelBundle/Controller/PanoplyController.php"
+    type:     annotation
+
 travel:
     resource: "@TravelBundle/Resources/config/routing.yml"
     prefix:   /

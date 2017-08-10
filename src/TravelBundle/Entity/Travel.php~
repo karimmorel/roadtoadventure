@@ -323,4 +323,28 @@ class Travel
     {
         return $this->longitude;
     }
+
+    /**
+     * Set minName
+     *
+     * @param string $minName
+     *
+     * @return Travel
+     */
+    public function setMinName($minName)
+    {
+        $this->min_name = $minName;
+
+        return $this;
+    }
+
+    /**
+     * Get minName
+     *
+     * @return string
+     */
+    public function getMinName()
+    {
+        return $this->min_name;
+    }
 }
