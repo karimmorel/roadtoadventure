@@ -44,7 +44,6 @@ class StuffController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($stuff);
             $em->flush();
-
             return $this->redirectToRoute('_show', array('id' => $stuff->getId()));
         }
 

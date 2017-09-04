@@ -5,6 +5,7 @@
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
+        {{ form_row(form.stuffs) }}
         <input type="submit" value="Créer" />
     {{ form_end(form) }}
             <a href="{{ path('panoply_index') }}">Retour aux panoplies</a>

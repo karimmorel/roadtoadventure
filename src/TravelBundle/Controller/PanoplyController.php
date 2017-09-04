@@ -47,7 +47,6 @@ class PanoplyController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($panoply);
             $em->flush();
-
             return $this->redirectToRoute('panoply_show', array('id' => $panoply->getId()));
         }
 

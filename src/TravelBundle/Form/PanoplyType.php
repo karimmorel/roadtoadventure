@@ -5,6 +5,7 @@ namespace TravelBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class PanoplyType extends AbstractType
 {
@@ -16,10 +17,16 @@ class PanoplyType extends AbstractType
         $builder
         ->add('name', null, array(
             'label' => 'Nom'
-        ))
+            ))
         ->add('description', null, array(
             'label' => 'Description'
-        ));
+            ))
+        ->add('stuffs', CollectionType::class, array(
+            'entry_type' => 'TravelBundle:Stuff',
+            'entry_options'  => array(
+                'attr'      => array('class' => 'email-box')
+                ),
+            ));
     }
     
     /**
@@ -29,7 +36,7 @@ class PanoplyType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'TravelBundle\Entity\Panoply'
-        ));
+            ));
     }
 
     /**

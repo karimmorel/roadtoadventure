@@ -13,13 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Panoply
 {
-    /**
-
-   * @ORM\ManyToMany(targetEntity="TravelBundle\Entity\Stuff", cascade={"persist"})
-
-   */
-
-    private $stuffs;
 
     /**
      * @var int
@@ -45,6 +38,11 @@ class Panoply
     private $description;
 
     /**
+    * @ORM\ManyToMany(targetEntity="TravelBundle\Entity\Stuff")
+    */
+    private $stuffs;
+
+    /**
      * Get id
      *
      * @return int
@@ -58,16 +56,6 @@ class Panoply
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Get stuff
-     *
-     * @return int
-     */
-    public function getStuff()
-    {
-        return $this->stuff;
     }
 
     /**
