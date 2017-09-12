@@ -17,6 +17,12 @@
                 <th>Description</th>
                 <td>{{ panoply.description }}</td>
             </tr>
+            {% for stuff in panoply.stuffs %}
+            <tr>
+                <th>Nom de l'équipement</th>
+                <td>{{ stuff.name }}</td>
+            </tr>
+            {% endfor %}
         </tbody>
     </table>
 

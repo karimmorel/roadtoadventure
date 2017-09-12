@@ -38,8 +38,13 @@ class Panoply
     private $description;
 
     /**
-    * @ORM\ManyToMany(targetEntity="TravelBundle\Entity\Stuff")
-    */
+     * Many Panoplies have Many Stuffs.
+     * @ORM\ManyToMany(targetEntity="Stuff")
+     * @ORM\JoinTable(name="panoply_stuff",
+     *      joinColumns={@ORM\JoinColumn(name="panoply_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="stuff_id", referencedColumnName="id")}
+     *      )
+     */
     private $stuffs;
 
     /**
@@ -113,7 +118,7 @@ class Panoply
      *
      * @return Panoply
      */
-    public function addStuff(\TravelBundle\Entity\Stuff $stuff)
+    public function addStuff(Stuff $stuff)
     {
         $this->stuffs[] = $stuff;
 
@@ -125,7 +130,7 @@ class Panoply
      *
      * @param \TravelBundle\Entity\Stuff $stuff
      */
-    public function removeStuff(\TravelBundle\Entity\Stuff $stuff)
+    public function removeStuff(Stuff $stuff)
     {
         $this->stuffs->removeElement($stuff);
     }
