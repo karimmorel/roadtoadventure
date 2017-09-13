@@ -1,34 +1,50 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{ panoply.name }}</h1>
+<h1>{{ panoply.name }}</h1>
 
-    <table class="table table-striped">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ panoply.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ panoply.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ panoply.description }}</td>
-            </tr>
-            {% for stuff in panoply.stuffs %}
-            <tr>
-                <th>{{ stuff.category.name }}</th>
-                <td>{{ stuff.name }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ panoply.id }}</td>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <td>{{ panoply.name }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ panoply.description }}</td>
+        </tr>
+    </tbody>
+</table>
 
-            <a href="{{ path('panoply_index') }}">Retour aux panoplies</a><br/>
-            <a href="{{ path('panoply_edit', { 'id': panoply.id }) }}">Modifier</a><br/>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer"><br/>
-            {{ form_end(delete_form) }}
+<h2>Liste des équipements de la panoplie</h2>
+<h3></h3>
+{% set i = '0' %}
+
+{% for stuff in panoply.stuffs %}
+{% if stuff.category.name != i %}
+
+<h3>{{ stuff.category.name }}</h3>
+<p>{{ stuff.name }}</p>
+
+{% else %}
+
+<p>{{ stuff.name }}</p>
+
+{% endif %}
+
+{% set i = stuff.category.name %}
+
+
+{% endfor %}
+
+
+<a href="{{ path('panoply_index') }}">Retour aux panoplies</a><br/>
+<a href="{{ path('panoply_edit', { 'id': panoply.id }) }}">Modifier</a><br/>
+{{ form_start(delete_form) }}
+<input type="submit" value="Supprimer"><br/>
+{{ form_end(delete_form) }}
 {% endblock %}

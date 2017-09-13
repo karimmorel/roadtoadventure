@@ -16,7 +16,10 @@ class PanoplyType extends AbstractType
     {
         $builder
         ->add('name', null, array(
-            'label' => 'Nom'
+            'label' => 'Nom',
+            'attr' => [
+            'class' => 'name_panoply'
+            ]
             ))
         ->add('description', null, array(
             'label' => 'Description'
@@ -25,6 +28,7 @@ class PanoplyType extends AbstractType
             'class' => 'TravelBundle:Stuff',
             'multiple' => true,
             'expanded' => true,
+            'group_by' => 'category.name',
             'choice_label' => 'name',
             ));
     }

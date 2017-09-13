@@ -4,8 +4,13 @@
     <h1>Création d'une nouvelle panoplie</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_row(form.stuffs) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    {% for stuff in form.stuffs %}
+    	{{ form_widget(stuff) }}
+    	{{ form_label(stuff) }}<br/>
+    {% endfor %}
+        
         <input type="submit" value="Créer" />
     {{ form_end(form) }}
             <a href="{{ path('panoply_index') }}">Retour aux panoplies</a>
