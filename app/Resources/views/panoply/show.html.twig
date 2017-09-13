@@ -19,7 +19,7 @@
             </tr>
             {% for stuff in panoply.stuffs %}
             <tr>
-                <th>Nom de l'équipement</th>
+                <th>{{ stuff.category.name }}</th>
                 <td>{{ stuff.name }}</td>
             </tr>
             {% endfor %}

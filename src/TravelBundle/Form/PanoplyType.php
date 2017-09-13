@@ -24,6 +24,7 @@ class PanoplyType extends AbstractType
         ->add('stuffs', EntityType::class, array(
             'class' => 'TravelBundle:Stuff',
             'multiple' => true,
+            'expanded' => true,
             'choice_label' => 'name',
             ));
     }
