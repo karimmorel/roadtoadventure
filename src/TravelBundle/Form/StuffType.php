@@ -28,7 +28,8 @@ class StuffType extends AbstractType
             'label' => 'Prix Moyen'
         ))
         ->add('link', null, array(
-            'label' => 'Lien'
+            'label' => 'Lien',
+            'required' => false
         ))
         ->add('informations', null, array(
             'label' => 'Informations'

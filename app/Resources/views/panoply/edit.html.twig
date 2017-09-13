@@ -1,15 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Modifier {{ panoply.name }}</h1>
+<h1>Modifier {{ panoply.name }}</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Modifier" /><br/>
-    {{ form_end(edit_form) }}
+{{ form_start(edit_form) }}
+{{ form_row(edit_form.name) }}
+{{ form_row(edit_form.description) }}
+{% for stuff in edit_form.stuffs %}
+{{ form_widget(stuff) }}
+{{ form_label(stuff) }}<br/>
+{% endfor %}
+<input type="submit" value="Modifier" /><br/>
+{{ form_end(edit_form) }}
 
-            <a href="{{ path('panoply_index') }}">Retour aux panoplies</a><br/>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer"><br/>
-            {{ form_end(delete_form) }}
+<a href="{{ path('panoply_index') }}">Retour aux panoplies</a><br/>
+{{ form_start(delete_form) }}
+<input type="submit" value="Supprimer"><br/>
+{{ form_end(delete_form) }}
 {% endblock %}
